@@ -10,10 +10,10 @@ def scrape_characters() -> list[Character]:
     characters = []
     while next_url_to_scrape is not None:
         characters_response = requests.get(next_url_to_scrape).json()
-        for character_dict in characters_response["result"]:
+        for character_dict in characters_response["results"]:
             characters.append(
                 Character(
-                    api_id=["id"],
+                    api_id=character_dict["id"],
                     name=character_dict["name"],
                     status=character_dict["status"],
                     species=character_dict["species"],
